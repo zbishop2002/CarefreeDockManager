@@ -11,7 +11,7 @@ The webhook URL will come formatted like #1. To use it with shoutrrr in your com
 1. https://discord.com/api/webhooks/WEBHOOKID/TOKEN
 2. discord://TOKEN@WEBHOOKID
 ### Watchtower Template Docker Compose
-*Note: `WATCHTOWER_SCHEDULE` uses cron formatting*
+*Note:* `WATCHTOWER_SCHEDULE` *uses cron formatting*
 
 ```
 services:
