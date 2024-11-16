@@ -4,8 +4,7 @@ Automatic Docker Container Backups/Updates - With Easy Discord Message Status Up
 carefree-container-manager is a compilation of various tools which can be combined to safely auto update docker containers without requiring much attention, facilitated by an additional script. Being, [Watchtower](https://github.com/containrrr/watchtower), for auto updating containers, [docker-backup](https://github.com/muesli/docker-backup) which backs up containers with their bind volumes, and [Shoutrrr](https://github.com/containrrr/shoutrrr), which very easily enables discord messaging from the server for information on updates and backups. Watchtower has Shoutrrr support built into the docker image. If notifications about backups via container-backup.sh are desired, Shoutrrr must be installed on the host. 
 
 #### Shoutrrr Discord Notification Setup 
-[Video Demonstration](discord-message-status-tutorial.webm)
-
+![ ](discord-status-update-demo.gif)
 - Make a Discord server and choose the desired channel for the notifications. **Edit Channel -> Integrations -> Create Webhook -> Copy Webhook URL**
 
 The webhook URL will come formatted like #1. To use it with shoutrrr in your compose.yml, convert it to #2's format.
