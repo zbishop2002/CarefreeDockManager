@@ -5,7 +5,11 @@ carefree-container-manager is a compilation of various tools which can be combin
 
 #### Shoutrrr Discord Notification Setup 
 
-![[Screencast from 2024-11-16 14-33-41.webm]]
+<video controls>
+  <source src="discord-message-status-tutorial.webm" type="video/webm">
+  Your browser does not support the video tag.
+</video>
+
 - Make a Discord server and choose the desired channel for the notifications. **Edit Channel -> Integrations -> Create Webhook -> Copy Webhook URL**
 
 The webhook URL will come formatted like #1. To use it with shoutrrr in your compose.yml, convert it to #2's format.
