@@ -5,6 +5,7 @@
 - **[Watchtower](https://github.com/containrrr/watchtower)**: Automatically updates selected containers, has out-of-the-box Shoutrrr integraton for status updates 
 - **[docker-backup](https://github.com/muesli/docker-backup)**: Creates .tar archive backup of all volumes, even bind mounts. The archives can be loaded as docker images if an update breaks
 - **[Shoutrrr](https://github.com/containrrr/shoutrrr)**: Sends Discord notifications about your backup/update status for more passive administration
+
 The cherry on top is the `container-backup.sh` custom script. Scheduling the script in your crontab enables pre-update backups with Shoutrrr integration 
 
 ### Shoutrrr Discord Notification Setup 
