@@ -90,7 +90,7 @@ if [ $? -eq 0 ]; then
 fi
 
 ```
-*- Note that the --tar flag causes docker-backup to export a duplicate of the entire container's filesystem, bind volumes included.*
+*- Note: The --tar flag causes docker-backup to export a duplicate of the entire container's filesystem, bind volumes included.*
   *- This is the default because it is safer, though it can take much more space*
   *- Removing the --tar flag will make the backup a .json file, which takes up far less space but won't always be able to salvage container data*
 
