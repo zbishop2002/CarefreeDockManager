@@ -3,7 +3,7 @@
 
 **CarefreeDockManager** helps you set up a seamless, hands-off solution for Docker container backups and updates. It brings together some fantastic FOSS tools:
 - **[Watchtower](https://github.com/containrrr/watchtower)**: Automatically updates selected containers, has out-of-the-box Shoutrrr integraton for status updates 
-- **[docker-backup](https://github.com/muesli/docker-backup)**: Creates .tar archive backup of all volumes, even bind mounts. The archives can be loaded as docker images if an update breaks
+- **[docker-backup](https://github.com/muesli/docker-backup)**: Creates .tar archive backup of all volumes, even bind mounts. The archives can be loaded as standalone docker images if an update breaks
 - **[Shoutrrr](https://github.com/containrrr/shoutrrr)**: Sends Discord notifications about your backup/update status for more passive administration
 
 The cherry on top is the `container-backup.sh` custom script. Scheduling the script in your crontab enables pre-update backups with Shoutrrr integration 
@@ -105,10 +105,12 @@ Edit root's crontab
 ```
 sudo crontab -e
 ```
+
 Example Crontab Entry Scheduled for Sunday 8:30am 
 ```
 30 8 * * 0 sudo /path/to/peronalized/container-backup.sh
 ```
+
 **Save and Exit Vim with `Esc` then `:wq` After Completion**
 
 ### Restore Container from Tar Archive 
