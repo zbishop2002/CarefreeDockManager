@@ -16,7 +16,7 @@ The webhook URL will come formatted as seen in #1. To use it with shoutrrr in yo
 1. https://discord.com/api/webhooks/WEBHOOKID/TOKEN
 2. discord://TOKEN@WEBHOOKID
 ### Watchtower Template Docker Compose
-*Note:* `WATCHTOWER_SCHEDULE` *uses cron formatting*
+*Note:* `WATCHTOWER_SCHEDULE` *uses cron formatting. 30 8 * * 1 is every Monday at 8:30am.*
 
 ```
 services:
@@ -99,6 +99,17 @@ fi
   - This is the default because it is safer, though it can take much more space
   - Removing the --tar flag will make the backup a .json file, which takes up far less space but may not enable full data recovery in the event of a breakage
 
+### Schedule Backups with Cron
+
+Edit root's crontab
+```
+sudo crontab -e
+```
+Example Crontab Entry Scheduled for Sunday 8:30am 
+```
+30 8 * * 0 sudo /path/to/peronalized/container-backup.sh
+```
+**Save and Exit Vim with `Esc` then `:wq` After Completion**
 
 ### Restore Container from Tar Archive 
 
