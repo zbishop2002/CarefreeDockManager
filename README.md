@@ -7,7 +7,7 @@ carefree-container-management is more or less a quickstart guide for a collectio
 ![ ](discord-status-update-demo.gif)
 - Make a Discord server and choose the desired channel for the notifications. **Edit Channel -> Integrations -> Create Webhook -> Copy Webhook URL**
 
-The webhook URL will come formatted like #1. To use it with shoutrrr in your compose.yml, convert it to #2's format.
+The webhook URL will come formatted as seen in #1. To use it with shoutrrr in your compose.yml, convert it to #2's format.
 1. https://discord.com/api/webhooks/WEBHOOKID/TOKEN
 2. discord://TOKEN@WEBHOOKID
 ### Watchtower Template Docker Compose
