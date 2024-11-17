@@ -1,5 +1,5 @@
 # Carefree Docker Container Manager
-### Automatic Docker Container Backups/Updates - With Easy Discord Message Status Updates  
+### Automatic Docker Container Backups/Updates With Status Updates Sent on Discord  
 
 **CarefreeDockManager** helps you set up a seamless, hands-off solution for Docker container backups and updates. It brings together some fantastic FOSS tools:
 - **[Watchtower](https://github.com/containrrr/watchtower)**: Automatically updates selected containers, has out-of-the-box Shoutrrr integraton for status updates 
