@@ -1,7 +1,7 @@
 # Carefree Container Management
 ### Automatic Docker Container Backups/Updates - With Easy Discord Message Status Updates  
 
-carefree-container-management is more or less a quickstart guide for a collection of FOSS tools which are made whole as a safe, and low maintenance auto backup/update solution for docker containers by an original script. These tools being, [Watchtower](https://github.com/containrrr/watchtower), for automatic updates, [docker-backup](https://github.com/muesli/docker-backup) a golang container backup script, and [Shoutrrr](https://github.com/containrrr/shoutrrr), which very easily enables discord messaging from the server for status updates.While Watchtower has Shoutrrr support built into the docker image, it can still be installed easily on the host for docker-backup. Automatic backups and their discord status updates are acheived by putting container-backup.sh in your crontab. 
+carefree-container-management is more or less a quickstart guide for a collection of FOSS tools which are made whole as a safe, and low maintenance auto backup/update solution for docker containers by an original script. These tools being, [Watchtower](https://github.com/containrrr/watchtower), for automatic updates, [docker-backup](https://github.com/muesli/docker-backup) a golang container backup script, and [Shoutrrr](https://github.com/containrrr/shoutrrr), which very easily enables discord messaging from the server for status updates. While Watchtower has Shoutrrr support built into the docker image, it can still be installed easily on the host for docker-backup. Automatic backups and their discord status updates are acheived by putting container-backup.sh in your crontab. 
 
 ### Shoutrrr Discord Notification Setup 
 ![ ](discord-status-update-demo.gif)
@@ -64,8 +64,7 @@ go install github.com/containrrr/shoutrrr/shoutrrr@latest
 ```
 
 ### Automatic Backup Script Template with Shoutrrr Integration
-- After modifying this template for your system, choose someplace to store it and make it a cron job, a day before the scheduled watchtower update is recommended
-- Note that the --tar flag causes docker-backup to export bound and unbound volumes of the container, allowing for a complete recovery if Watchtower breaks the container
+- After modifying this template for your system, choose someplace to store it and make it a cron job. A day before the scheduled watchtower update is recommended
 - Use the exact same webhook link from the Watchtower docker compose 
 - The cron job must be on root's crontab or that of another admin account
 
@@ -90,8 +89,11 @@ if [ $? -eq 0 ]; then
     send_notification "Docker Container Backup Complete"
 fi
 
-
 ```
+* - Note that the --tar flag causes docker-backup to export a duplicate of the entire container's filesystem, bind volumes included. 
+  - This is the default because it is safer, though it can take much more space
+  - Removing the --tar flag will make the backup a .json file, which takes up far less space but won't always be able to salvage container data*
+
 
 ### Restore Container from Tar Archive 
 
