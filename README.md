@@ -121,6 +121,9 @@ Description=Execute Container Backup Script
 [Service]
 Type=oneshot
 ExecStart=/path/to/Container-Backup.sh
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=container-backup
 ```
 
 Enable and start the timer
