@@ -100,7 +100,7 @@ fi
 
 ### Schedule Backups with a Systemd Timer 
 
-Make the timer file at /etc/systemd/system/container-backup.timer
+Make the timer file at `/etc/systemd/system/container-backup.timer`
 ```
 [Unit]
 Description=Run Container Backup Script Weekly
@@ -113,7 +113,7 @@ Persistent=true
 WantedBy=timers.target
 ```
 
-Make the service file at /etc/systemd/system/container-backup.service 
+Make the service file at `/etc/systemd/system/container-backup.service` 
 ```
 [Unit]
 Description=Execute Container Backup Script
