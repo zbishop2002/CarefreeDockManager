@@ -6,7 +6,7 @@
 - **[docker-backup](https://github.com/muesli/docker-backup)**: Creates .tar archive backup of all volumes, even bind mounts. The archives can be loaded as standalone docker images if an update breaks
 - **[Shoutrrr](https://github.com/containrrr/shoutrrr)**: Sends Discord notifications about your backup/update status for more passive administration
 
-The cherry on top is the `container-backup.sh` custom script. Scheduling the script in your crontab enables pre-update backups with Shoutrrr integration 
+The cherry on top is the `container-backup.sh` custom script. Scheduling the script on a systemd timer enables pre-update backups with Shoutrrr integration 
 
 ### Shoutrrr Discord Notification Setup 
 ![ ](discord-status-update-demo.gif)
@@ -69,9 +69,8 @@ go install github.com/containrrr/shoutrrr/shoutrrr@latest
 ```
 
 ### Automatic Backup Script Template with Shoutrrr Integration
-- After modifying this template for your system, choose someplace to store it and make it a cron job. A day before the scheduled watchtower update is recommended
+- After modifying this template for your system, choose someplace to store it permanently before making a systemd timer. A day before the scheduled watchtower update is recommended
 - Use the exact same webhook link from the Watchtower docker compose 
-- The cron job must be on root's crontab or that of another admin account
 
 ```
 #!/bin/bash
@@ -99,19 +98,37 @@ fi
   - This is the default because it is safer, though it can take much more space
   - Removing the --tar flag will make the backup a .json file, which takes up far less space but may not enable full data recovery in the event of a breakage
 
-### Schedule Backups with Cron
+### Schedule Backups with a Systemd Timer 
 
-Edit root's crontab
+Make the timer file at /etc/systemd/system/container-backup.timer
 ```
-sudo crontab -e
+[Unit]
+Description=Run Container Backup Script Weekly
+
+[Timer]
+OnCalendar=Sun 08:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target
 ```
 
-Example Crontab Entry Scheduled for Sunday 8:30am 
+Make the service file at /etc/systemd/system/container-backup.service 
 ```
-30 8 * * 0 sudo /path/to/peronalized/container-backup.sh
+[Unit]
+Description=Execute Container Backup Script
+
+[Service]
+Type=oneshot
+ExecStart=/path/to/Container-Backup.sh
 ```
 
-**Save and Exit Vim with `Esc` then `:wq` After Completion**
+Enable and start the timer
+```
+sudo systemctl daemon-reload && \
+sudo systemctl enable container-backup.timer && \
+sudo systemctl start container-backup.timer
+```
 
 ### Restore Container from Tar Archive 
 
